@@ -9,20 +9,16 @@ const Header = ({ title }) => {
     );
 };
 
-Header.defaultProps = {
-    title: "Shopping List"
-};
-
 const styles = StyleSheet.create({
     headerSection: {
         height: 120,
-        paddingTop: 75
+        paddingTop: 75,
+        paddingLeft: 30
     },
     headerText: {
         color: "#f1f3f4",
         fontWeight: "bold",
-        fontSize: 30,
-        paddingLeft: 30
+        fontSize: 30
     }
 });
 

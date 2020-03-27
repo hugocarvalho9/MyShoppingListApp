@@ -8,7 +8,7 @@ const ItemInput = ({ addItem }) => {
     const onChange = textValue => setText(textValue);
 
     return (
-        <View style={styles.itemInputView}>
+        <View style={styles.inputSection}>
             <TextInput
                 style={styles.textInput}
                 placeholder="Add Item..."
@@ -21,7 +21,6 @@ const ItemInput = ({ addItem }) => {
                 color="#2a7886"
                 onPress={() => {
                     addItem(text);
-                    Keyboard.dismiss();
                     setText("");
                 }}
             />
@@ -30,7 +29,7 @@ const ItemInput = ({ addItem }) => {
 };
 
 const styles = StyleSheet.create({
-    itemInputView: {
+    inputSection: {
         marginLeft: 25,
         marginRight: 25,
         marginBottom: 40,

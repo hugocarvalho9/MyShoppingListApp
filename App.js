@@ -8,6 +8,27 @@ import uuid from "uuid-random";
 export default function App() {
     const [items, setItems] = useState([]);
 
+    useEffect(() => {
+        getStorageValue();
+    }, []);
+
+    async function getStorageValue() {
+        try {
+            const stored_items = await AsyncStorage.getItem("list_items");
+            setItems(JSON.parse(stored_items));
+        } catch (e) {
+            console.log("No existing data");
+        }
+    }
+
+    saveNewState = new_state => {
+        try {
+            AsyncStorage.setItem("list_items", JSON.stringify(new_state));
+        } catch (error) {
+            console.log("Error on updating list items through AsyncStorage");
+        }
+    };
+
     const deleteItem = async id => {
         try {
             setItems(prevItems => {
@@ -16,16 +37,8 @@ export default function App() {
                 return new_state;
             });
         } catch (error) {
-            console.log("Error on saving data");
+            console.log("Error on deleting data");
         }
-    };
-
-    saveNewState = new_state => {
-        console.log(new_state);
-        const saveNewState = AsyncStorage.setItem(
-            "list_items",
-            JSON.stringify(new_state)
-        );
     };
 
     const addItem = async text => {
@@ -49,7 +62,7 @@ export default function App() {
                     return new_state;
                 });
             } catch (error) {
-                console.log("Error on saving data");
+                console.log("Error on adding new data");
             }
         } else {
             Alert.alert(
@@ -75,22 +88,9 @@ export default function App() {
                 return itemsUpdated;
             });
         } catch (error) {
-            console.log("Error on saving data");
+            console.log("Error on updating list item");
         }
     };
-
-    useEffect(() => {
-        getStorageValue();
-    }, []);
-
-    async function getStorageValue() {
-        try {
-            const stored_items = await AsyncStorage.getItem("list_items");
-            setItems(JSON.parse(stored_items));
-        } catch (e) {
-            console.log("No existing data");
-        }
-    }
 
     return (
         <View style={styles.container}>

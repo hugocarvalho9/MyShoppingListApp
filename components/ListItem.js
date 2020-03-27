@@ -4,33 +4,33 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ListItem = ({ item, deleteItem, updateItemStatus }) => {
     let text;
-    let icon_description;
+    let icon;
 
     if (!item.completed) {
-        text = <Text style={styles.listItemText}> {item.description}</Text>;
-        icon_description = "checkbox-blank-circle-outline";
-    } else {
         text = (
-            <Text style={styles.listItemCompletedText}>{item.description}</Text>
+            <Text style={styles.itemTextIncompleted}> {item.description}</Text>
         );
-        icon_description = "check-circle";
+        icon = "checkbox-blank-circle-outline";
+    } else {
+        text = <Text style={styles.itemTextCompleted}>{item.description}</Text>;
+        icon = "check-circle";
     }
 
     return (
-        <TouchableOpacity style={styles.listItem}>
-            <View style={styles.listView}>
+        <TouchableOpacity style={styles.itemSection}>
+            <View style={styles.itemView}>
                 <MaterialCommunityIcons
-                    style={styles.checkCircle}
-                    name={icon_description}
+                    style={styles.checkItem}
+                    name={icon}
                     size={36}
                     color="#2a7886"
                     onPress={() => updateItemStatus(item.id)}
                 />
                 {text}
                 <MaterialCommunityIcons
-                    style={styles.removeIcon}
+                    style={styles.removeItem}
                     name="delete"
-                    size={26}
+                    size={24}
                     color="#9d2503"
                     onPress={() => deleteItem(item.id)}
                 />
@@ -40,33 +40,34 @@ const ListItem = ({ item, deleteItem, updateItemStatus }) => {
 };
 
 const styles = StyleSheet.create({
-    listItem: {
+    itemSection: {
         marginLeft: 10,
         marginRight: 10,
-        marginBottom: 2,
+        marginBottom: 1,
         padding: 15,
         backgroundColor: "#f1f3f4",
-        borderBottomWidth: 1,
-        borderRadius: 5,
-        borderColor: "#A6B7C2"
+        borderRadius: 5
     },
-    listView: {
+    itemView: {
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center"
     },
-    listItemCompletedText: {
+    itemTextCompleted: {
         width: "75%",
         fontSize: 16,
         textDecorationLine: "line-through",
         color: "grey"
     },
-    listItemText: {
+    itemTextIncompleted: {
         width: "75%",
         fontSize: 16,
         textDecorationLine: "none"
     },
-    checkCircle: {
+    checkItem: {
+        width: "15%"
+    },
+    removeItem: {
         width: "15%"
     }
 });
