@@ -4,7 +4,7 @@
 
 This mobile app was developed with a personal goal of learning about the basic concepts of React Native. It uses React Native Hooks and AsyncStorage to provide a simple and effective workflow for the user.
 
-![](print.png = 250x400)
+![](print.png)
 
 ## Installation and Usage
 
