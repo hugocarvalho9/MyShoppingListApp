@@ -4,7 +4,7 @@
 
 This mobile app was developed with a personal goal of learning about the basic concepts of React Native. It uses React Native Hooks and AsyncStorage to provide a simple and effective workflow for the user.
 
-![](assets\print.png)
+![](print.png)
 
 ## Installation and Usage
 
@@ -14,7 +14,7 @@ This mobile app was developed with a personal goal of learning about the basic c
 $ npm install -g expo-cli
 ```
 
-2. Download Expo App from your App Store/Play Store
+2. Download Expo App from your App Store/Play Store.
 
 3. Start the Project:
 
